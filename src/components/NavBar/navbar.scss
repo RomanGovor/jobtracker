@@ -1,4 +1,133 @@
+@import 'src/sass/abstract/constants';
+
 .navbar {
   height: 116px;
-  background-color: var(--apple-green);
+  background-color: $color-green-apple;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: bold;
+  font-size: 14px;
+  color: $color-white;
+
+  &__logo {
+    display: block;
+    margin-left: 37px;
+
+    width: 147px;
+    height: 56px;
+
+    @media screen and (max-width: $content-phone) {
+      width: 98px;
+      height: 37px;
+
+      margin-left: 25px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    margin: 0;
+  }
+
+  &__links-list {
+    width: 380px;
+    display: inline-flex;
+    justify-content: space-evenly;
+
+    @media screen and (max-width: $content-phone) {
+      display: none;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 24px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+
+    @media screen and (max-width: $content-phone) {
+      font-size: 25px;
+      font-weight: bold;
+      color: $color-black;
+    }
+
+    &:hover,
+    &:active,
+    &__active {
+      border-bottom: 2px solid $color-white;
+
+      @media screen and (max-width: $content-phone) {
+        border: none;
+        font-weight: bold;
+        color: $color-green-apple;
+      }
+    }
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+    width: 39px;
+    height: 39px;
+    margin-right: 36px;
+
+    @media screen and (max-width: $content-phone) {
+      margin-right: 25px;
+    }
+  }
+
+  .navbar__menu {
+    display: none;
+    cursor: pointer;
+
+    @media screen and (max-width: $content-phone) {
+      display: flex;
+      align-self: center;
+
+      height: 24px;
+      margin-right: 25px;
+    }
+  }
+
+  &--open {
+    @media screen and (max-width: $content-phone) {
+      z-index: 1;
+      background-color: $color-white;
+      justify-content: space-between;
+      height: 100vh;
+      align-items: flex-start;
+      padding-top: 16px;
+
+      .navbar__links-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        order: 3;
+        height: 150px;
+        width: 100%;
+        position: absolute;
+        top: 185px;
+        left: 0;
+        align-items: center;
+      }
+    }
+
+    .navbar__filter {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $content-phone) {
+    height: 77px;
+  }
 }
