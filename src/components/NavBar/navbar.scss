@@ -80,6 +80,8 @@
     height: 39px;
     margin-right: 36px;
 
+    cursor: pointer;
+
     @media screen and (max-width: $content-phone) {
       margin-right: 25px;
     }

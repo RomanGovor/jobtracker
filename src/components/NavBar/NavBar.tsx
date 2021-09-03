@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import logoIcon from '../../assets/images/logobear.svg';
 import logoGreenIcon from '../../assets/images/logobearGreen.svg';
 import filterIcon from '../../assets/images/filter.svg';
+import filterNoActiveIcon from '../../assets/images/filterNoActive.svg';
 import menuBurgerIcon from '../../assets/images/menu-burger.png';
 import cancelIcon from '../../assets/images/cancel.svg';
 import './navbar.scss';
+import { PropsTypes } from './types';
+import { actionsCommon } from '../../redux/commonReducer';
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<PropsTypes> = (props) => {
+  const { isFilterActive } = props;
   const [isOpenMenu, setOpenMenu] = useState(false);
+  const dispatch = useDispatch();
 
-  const clickMenu = () => {
+  const onMenuClick = () => {
     setOpenMenu((prevState) => !prevState);
   };
+
+  const onFilterClick = () => {
+    dispatch(actionsCommon.toggleFilterFlag(!isFilterActive));
+  };
+
+  useEffect(() => {
+    if (isOpenMenu && isFilterActive) {
+      onFilterClick();
+    }
+  }, [isOpenMenu]);
 
   return (
     <header className={`navbar ${isOpenMenu ? 'navbar--open' : ''}`}>
@@ -29,11 +45,15 @@ const NavBar: React.FC = () => {
           </li>
         </ul>
         <div className="navbar__filter">
-          <img src={filterIcon} alt="filter" />
+          <img
+            onClick={onFilterClick}
+            src={isFilterActive ? filterIcon : filterNoActiveIcon}
+            alt="filter"
+          />
         </div>
         <div className="navbar__menu">
           <img
-            onClick={clickMenu}
+            onClick={onMenuClick}
             src={isOpenMenu ? cancelIcon : menuBurgerIcon}
             alt="menu burger"
           />
