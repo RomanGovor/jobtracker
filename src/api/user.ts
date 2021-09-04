@@ -1,23 +1,7 @@
 import axios from 'axios';
-// import { getAccessTokenFromStorage } from '../utils/storage';
+import { getAccessTokenFromStorage } from '../utils/storage';
 
 export const defaultPath = 'https://jogtracker.herokuapp.com/api/v1/auth/';
-
-// export const installingAuthorizationConfig = (config: any) => {
-//   const token = getAccessTokenFromStorage();
-//
-//   config.headers = {
-//     'Content-type': 'application/json',
-//   };
-//
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//
-//   return config;
-// };
-//
-// axios.interceptors.request.use(installingAuthorizationConfig);
 
 export const jogtrackerApi = {
   getUserToken(uuid: string) {
@@ -38,4 +22,18 @@ export const jogtrackerApi = {
       .then(() => true)
       .catch(() => false);
   },
+  installingAuthorizationConfig(config: any) {
+    const token = getAccessTokenFromStorage();
+
+    if (token) {
+      config.headers = {
+        'Content-type': 'application/json',
+      };
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
 };
+
+axios.interceptors.request.use(jogtrackerApi.installingAuthorizationConfig);
