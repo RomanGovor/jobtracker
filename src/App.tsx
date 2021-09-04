@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import { actionsCommon, InitialStateType as CommonStateType } from './redux/commonReducer';
 import { AppStateType } from './redux/store';
-import JogsPageContainer from './pages/jogs/JogsPageContainer';
+import Routes from './pages/Routes/Routes';
+import { getAccessTokenFromStorage } from './utils/storage';
 
 type PropsType = {
   common: CommonStateType;
@@ -12,13 +13,24 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
   const { common } = props;
-  const { isFilterActive } = common;
+  const { isFilterActive, isLogin, uuid } = common;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = getAccessTokenFromStorage();
+    dispatch(actionsCommon.setUserToken(token));
+    dispatch(actionsCommon.asyncCheckOnTokenValid());
+  }, []);
+
+  useEffect(() => {
+    console.log(isLogin);
+  }, [isLogin]);
 
   return (
     <div className="App">
-      <NavBar isFilterActive={isFilterActive} />
+      <NavBar isFilterActive={isFilterActive} isLogin={isLogin} />
       <main>
-        <JogsPageContainer />
+        <Routes isLogin={isLogin} uuid={uuid} />
       </main>
     </div>
   );

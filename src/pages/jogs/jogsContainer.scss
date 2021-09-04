@@ -1,0 +1,12 @@
+@import "src/sass/abstract/constants";
+
+.jogs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: $content-wide;
+
+  @media screen and (max-width: $content-phone) {
+    justify-content: center;
+  }
+}

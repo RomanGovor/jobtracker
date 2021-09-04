@@ -7,6 +7,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/no-noninteractive-element-interactions': 'off',
         'import/no-cycle': 'warn',
+        'no-unneeded-ternary': 'warn',
         "jsx-a11y/label-has-associated-control": [ 1, {
             "labelComponents": ["CustomInputLabel"],
             "labelAttributes": ["label"],

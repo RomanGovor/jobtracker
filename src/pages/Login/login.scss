@@ -1,0 +1,67 @@
+@import "src/sass/abstract/constants";
+@import "src/sass/abstract/mixins";
+
+.login__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 701px;
+
+
+  .login {
+    display: flex;
+    justify-content: center;
+    @include size(503px, 379px);
+    background-image: url('../../assets/images/bear-face.svg');
+    background-position: 50% 72px;
+    background-repeat: no-repeat;
+    background-color: $color-purple;
+    border-radius: 44px;
+    padding-bottom: 36px;
+
+    &__button {
+      @include size(151px, 60px);
+      border-radius: 36px;
+      border: solid 3px $color-white;
+      background-color: transparent;
+      align-self: flex-end;
+
+      font-size: 18px;
+      font-weight: bold;
+      color: $color-white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-purple;
+      }
+
+      @media screen and (max-width: $content-phone) {
+        align-self: flex-end;
+        color: $color-purple;
+        border: solid 3px $color-purple;
+
+        &:hover {
+          background-color: $color-purple;
+          color: $color-white;
+        }
+      }
+    }
+
+    @media screen and (max-width: $content-phone) {
+      background-image: url('../../assets/images/bear-face-purple.png');
+      background-color: $color-white;
+      height: 624px;
+      padding-bottom: 30vh;
+    }
+
+    @media screen and (max-width: $content-phone) {
+      background-position: center 30%;
+      height: 590px;
+    }
+  }
+
+  @media screen and (max-width: $content-phone) {
+    min-height: 594px;
+  }
+}

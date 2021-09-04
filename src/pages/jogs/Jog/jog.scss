@@ -1,0 +1,52 @@
+@import "src/sass/abstract/constants";
+
+.jog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 122px;
+  font-size: 14px;
+  color: $color-jog-text;
+  margin-top: 53px;
+
+  &__img {
+    width: 87px;
+    height: 87px;
+    background-image: url('../../../assets/images/jog.svg');
+    background-repeat: no-repeat;
+
+    margin-right: 46px;
+  }
+
+  @media screen and (max-width: $content-phone) {
+    display: flex;
+    justify-content: flex-end;
+    height: 187.4px;
+    width: 100vw;
+    border-bottom: 2px solid $color-bg-filter-panel;
+
+    .jog__text {
+      align-self: center;
+      width: 50%;
+    }
+
+    &__img {
+      background-position: 25% 43%;
+    }
+  }
+
+  &__info {
+    margin-bottom: 9px;
+  }
+
+  &__date {
+    color: $color-jog-text-time;
+    font-weight: normal;
+  }
+
+  &__inside-text {
+    color: $color-black;
+    font-weight: bold;
+  }
+}
