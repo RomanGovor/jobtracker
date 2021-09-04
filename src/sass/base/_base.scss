@@ -9,3 +9,21 @@ body {
   box-sizing: border-box;
   font-family: $font-stack;
 }
+
+button {
+  @include size(151px, 60px);
+  border-radius: 36px;
+  border: solid 3px $color-white;
+  background-color: transparent;
+  align-self: flex-end;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: $color-white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-white;
+    color: $color-purple;
+  }
+}

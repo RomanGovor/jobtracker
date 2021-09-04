@@ -15,4 +15,36 @@ body {
   font-family: "SFUIText", sans-serif;
 }
 
+button {
+  width: 151px;
+  height: 60px;
+  border-radius: 36px;
+  border: solid 3px #ffffff;
+  background-color: transparent;
+  align-self: flex-end;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #ffffff;
+  color: #e990f9;
+}
+
+.overlay-main {
+  z-index: 1;
+  position: fixed;
+  top: 116px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+}
+@media screen and (max-width: 640px) {
+  .overlay-main {
+    top: 77px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

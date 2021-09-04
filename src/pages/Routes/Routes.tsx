@@ -3,12 +3,19 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { PropsType } from './types';
 import JogsPageContainer from '../jogs/JogsPageContainer';
 import Login from '../Login/Login';
+import NothingPage from '../Nothing/NothingPage';
+import Info from '../Info/Info';
 
 const Routes: React.FC<PropsType> = (props) => {
   const { isLogin, uuid } = props;
 
   return (
     <Switch>
+      <Route
+        exact
+        path="/info"
+        render={() => (isLogin ? <Info /> : <Login uuid={uuid} isLogin={isLogin} />)}
+      />
       <Route
         exact
         path="/jogs"
@@ -18,6 +25,10 @@ const Routes: React.FC<PropsType> = (props) => {
         exact
         path="/"
         render={() => (isLogin ? <Redirect to="/jogs" /> : <Login uuid={uuid} isLogin={isLogin} />)}
+      />
+      <Route
+        path="/*"
+        render={() => (isLogin ? <NothingPage /> : <Login uuid={uuid} isLogin={isLogin} />)}
       />
     </Switch>
   );

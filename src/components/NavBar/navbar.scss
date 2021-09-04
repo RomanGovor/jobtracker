@@ -17,13 +17,10 @@
     display: block;
     margin-left: 37px;
 
-    width: 147px;
-    height: 56px;
+    @include size(147px, 56px);
 
     @media screen and (max-width: $content-phone) {
-      width: 98px;
-      height: 37px;
-
+      @include size(98px, 37px);
       margin-left: 25px;
     }
   }
@@ -102,7 +99,7 @@
 
   &--open {
     @media screen and (max-width: $content-phone) {
-      z-index: 1;
+      z-index: 2;
       background-color: $color-white;
       justify-content: space-between;
       height: 100vh;
@@ -114,7 +111,6 @@
         flex-direction: column;
         justify-content: space-between;
 
-        order: 3;
         @include size(100%, 150px);
         position: absolute;
         top: 185px;

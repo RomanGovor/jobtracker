@@ -59,6 +59,7 @@ const NavBar: React.FC<PropsTypes> = (props) => {
               alt="menu burger"
             />
           </div>
+          {isOpenMenu && <div className="overlay-main" />}
         </nav>
       )}
     </header>
