@@ -34,10 +34,22 @@ function* updateArrayJogs(action: ActionsType): SagaIterator | jogType[] {
   }
 }
 
+function* postJogToAPI(action: ActionsType): SagaIterator | boolean {
+  if (action.type === actionsTypes.ASYNC_POST_JOG) {
+    const { jog } = action;
+
+    const isSuccess = yield call(jogsApi.postJog, jog);
+    if (isSuccess) {
+      yield put(actionsCommon.setSendJogFlag(isSuccess));
+    }
+  }
+}
+
 function* commonWatcher() {
   yield takeEvery(actionsTypes.ASYNC_GET_AUTHENTICATION_TOKEN, getAuthenticationTokenFromAPI);
   yield takeEvery(actionsTypes.ASYNC_CHECK_ON_TOKEN_VALID, checkOnTokenValid);
   yield takeEvery(actionsTypes.ASYNC_GET_JOGS, updateArrayJogs);
+  yield takeEvery(actionsTypes.ASYNC_POST_JOG, postJogToAPI);
 }
 
 export default commonWatcher;

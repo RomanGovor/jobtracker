@@ -19,5 +19,5 @@ export type jogType = {
   user_id: string;
   distance: number;
   time: number;
-  date: number;
+  date: string;
 };

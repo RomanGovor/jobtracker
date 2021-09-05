@@ -13,7 +13,7 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
   const { common } = props;
-  const { isFilterActive, isLogin, uuid } = common;
+  const { isFilterActive, isLogin, uuid, isSuccessSendJog } = common;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const App: React.FC<PropsType> = (props) => {
     <div className="App">
       <NavBar isFilterActive={isFilterActive} isLogin={isLogin} />
       <main>
-        <Routes isLogin={isLogin} uuid={uuid} />
+        <Routes isLogin={isLogin} uuid={uuid} isSuccessSendJog={isSuccessSendJog} />
       </main>
     </div>
   );

@@ -12,7 +12,9 @@ const Jog: React.FC<PropsType> = (props) => {
     <div className="jog">
       <div className="jog__img" />
       <div className="jog__text">
-        <p className="jog__date jog__info">{moment(new Date(date * 1e3)).format('MM.DD.YYYY')}</p>
+        <p className="jog__date jog__info">
+          {moment(new Date(Number(date) * 1e3)).format('MM.DD.YYYY')}
+        </p>
         <p className="jog__info">
           <span className="jog__inside-text">Speed:</span> {speed.toPrecision(2)}
         </p>

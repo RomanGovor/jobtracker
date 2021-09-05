@@ -6,19 +6,22 @@ export const initialState = {
   isLogin: false as boolean,
   userToken: '' as string,
   uuid: 'hello' as string,
-  jogs: [{ id: 1, user_id: 'test', distance: 1, time: 1, date: 1 }] as jogType[],
+  jogs: [{ id: 1, user_id: 'test', distance: 1, time: 1, date: '1' }] as jogType[],
   isAwait: true as boolean,
+  isSuccessSendJog: false as boolean,
 };
 
 export enum actionsTypes {
   TOGGLE_FILTER_FLAG = 'COMMON/TOGGLE_FILTER_FLAG',
   ASYNC_GET_AUTHENTICATION_TOKEN = 'COMMON/ASYNC_GET_AUTHENTICATION_TOKEN',
   SET_AUTHENTICATION_TOKEN = 'COMMON/SET_AUTHENTICATION_TOKEN',
-  SET_LOGIN_FLAG = 'SET_LOGIN_FLAG',
+  SET_LOGIN_FLAG = 'COMMON/SET_LOGIN_FLAG',
   ASYNC_CHECK_ON_TOKEN_VALID = 'COMMON/ASYNC_CHECK_ON_TOKEN_VALID',
   ASYNC_GET_JOGS = 'COMMON/ASYNC_GET_JOGS',
   SET_JOGS = 'COMMON/SET_JOGS',
-  SET_AWAIT_FLAG = 'SET_AWAIT_FLAG',
+  SET_AWAIT_FLAG = 'COMMON/SET_AWAIT_FLAG',
+  ASYNC_POST_JOG = 'COMMON/ASYNC_POST_JOG',
+  SET_SUCCESS_SEND_JOG_FLAG = 'COMMON/SET_SUCCESS_SEND_JOG_FLAG',
 }
 
 export const actionsCommon = {
@@ -33,6 +36,9 @@ export const actionsCommon = {
   asyncGetJogs: () => ({ type: actionsTypes.ASYNC_GET_JOGS } as const),
   setJogs: (jogs: jogType[]) => ({ type: actionsTypes.SET_JOGS, jogs } as const),
   setAwaitFlag: (isAwait: boolean) => ({ type: actionsTypes.SET_AWAIT_FLAG, isAwait } as const),
+  asyncPostJog: (jog: jogType) => ({ type: actionsTypes.ASYNC_POST_JOG, jog } as const),
+  setSendJogFlag: (isSuccessSendJog: boolean) =>
+    ({ type: actionsTypes.SET_SUCCESS_SEND_JOG_FLAG, isSuccessSendJog } as const),
 };
 
 export type InitialStateType = typeof initialState;
@@ -68,6 +74,12 @@ const commonReducer = (state = initialState, action: ActionsType): InitialStateT
       return {
         ...state,
         isAwait: action.isAwait,
+      };
+    }
+    case actionsTypes.SET_SUCCESS_SEND_JOG_FLAG: {
+      return {
+        ...state,
+        isSuccessSendJog: action.isSuccessSendJog,
       };
     }
     default:

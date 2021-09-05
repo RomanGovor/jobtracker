@@ -34,6 +34,7 @@
     width: 380px;
     display: inline-flex;
     justify-content: space-evenly;
+    z-index: 1;
 
     @media screen and (max-width: $content-phone) {
       display: none;
@@ -50,6 +51,7 @@
     text-transform: uppercase;
     line-height: 24px;
     border-bottom: 2px solid transparent;
+    color: white;
     cursor: pointer;
 
     @media screen and (max-width: $content-phone) {

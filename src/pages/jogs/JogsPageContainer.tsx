@@ -9,9 +9,12 @@ import { PropsTypeContainer as PropsType } from './types';
 const JogsPageContainer: React.FC<PropsType> = (props) => {
   const dispatch = useDispatch();
   const { common } = props;
-  const { isFilterActive, jogs, isAwait } = common;
+  const { isFilterActive, jogs, isAwait, isSuccessSendJog } = common;
 
   useEffect(() => {
+    if (isSuccessSendJog) {
+      dispatch(actionsCommon.setSendJogFlag(false));
+    }
     dispatch(actionsCommon.setAwaitFlag(true));
     dispatch(actionsCommon.asyncGetJogs());
     dispatch(actionsCommon.setAwaitFlag(false));

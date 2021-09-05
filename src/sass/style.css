@@ -33,7 +33,7 @@ button:hover {
 }
 
 .overlay-main {
-  z-index: 1;
+  z-index: 0;
   position: fixed;
   top: 116px;
   left: 0;

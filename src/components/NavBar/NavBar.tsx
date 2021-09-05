@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import logoIcon from '../../assets/images/logobear.svg';
 import logoGreenIcon from '../../assets/images/logobearGreen.svg';
 import filterIcon from '../../assets/images/filter.svg';
@@ -23,9 +24,24 @@ const NavBar: React.FC<PropsTypes> = (props) => {
     dispatch(actionsCommon.toggleFilterFlag(!isFilterActive));
   };
 
+  const navHandleClick = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    const elem = target.closest('a');
+
+    if (!elem) return;
+
+    setOpenMenu(false);
+  };
+
   useEffect(() => {
     if (isOpenMenu && isFilterActive) {
       onFilterClick();
+    }
+
+    if (isOpenMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
   }, [isOpenMenu]);
 
@@ -33,16 +49,26 @@ const NavBar: React.FC<PropsTypes> = (props) => {
     <header className={`navbar ${isOpenMenu ? 'navbar--open' : ''}`}>
       <img className="navbar__logo" src={isOpenMenu ? logoGreenIcon : logoIcon} alt="logobear" />
       {isLogin && (
-        <nav className="navbar__nav">
+        <nav className="navbar__nav" onClick={navHandleClick}>
           <ul className="navbar__links-list">
             <li>
-              <span className="navbar__link">jobs</span>
+              <NavLink activeClassName="navbar__link__active" className="navbar__link" to="/jogs">
+                jobs
+              </NavLink>
             </li>
             <li>
-              <span className="navbar__link">info</span>
+              <NavLink activeClassName="navbar__link__active" className="navbar__link" to="/info">
+                info
+              </NavLink>
             </li>
             <li>
-              <span className="navbar__link">contact us</span>
+              <NavLink
+                activeClassName="navbar__link__active"
+                className="navbar__link"
+                to="/contact"
+              >
+                contact us
+              </NavLink>
             </li>
           </ul>
           <div className="navbar__filter">

@@ -26,9 +26,6 @@ export const userApi = {
     const token = getAccessTokenFromStorage();
 
     if (token) {
-      config.headers = {
-        'Content-type': 'application/json',
-      };
       config.headers.Authorization = `Bearer ${token}`;
     }
 
