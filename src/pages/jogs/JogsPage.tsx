@@ -7,11 +7,15 @@ import Jog from './Jog/Jog';
 import jogBtnIcon from '../../assets/images/add-jog-btn.svg';
 
 const JogsPage: React.FC<PropsType> = (props) => {
-  const { isFilterActive, jogs, isAwait } = props;
+  const { isFilterActive, jogs, isAwait, setFromDate, setToDate, isFiltersWriting } = props;
 
   return (
     <>
-      <FilterPanel isFilterActive={isFilterActive} />
+      <FilterPanel
+        isFilterActive={isFilterActive}
+        setToDate={setToDate}
+        setFromDate={setFromDate}
+      />
       <section className="jogs-container">
         {jogs.map((jog) => (
           <Jog jog={jog} key={jog.id} />
@@ -22,7 +26,7 @@ const JogsPage: React.FC<PropsType> = (props) => {
           <img src={jogBtnIcon} alt="add jog" />
         </Link>
       </div>
-      {!jogs.length && !isAwait && <Redirect to="/nothing" />}
+      {!jogs.length && !isAwait && !isFiltersWriting && <Redirect to="/nothing" />}
     </>
   );
 };

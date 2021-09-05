@@ -5,6 +5,9 @@ export type PropsTypeJogs = {
   isFilterActive: boolean;
   jogs: jogType[];
   isAwait: boolean;
+  setFromDate: any;
+  setToDate: any;
+  isFiltersWriting: boolean;
 };
 
 export type mapStateType = {

@@ -6,7 +6,7 @@ export const initialState = {
   isLogin: false as boolean,
   userToken: '' as string,
   uuid: 'hello' as string,
-  jogs: [{ id: 1, user_id: 'test', distance: 1, time: 1, date: '1' }] as jogType[],
+  jogs: [{ id: 1, user_id: 'test', distance: 1, time: 2, date: '1' }] as jogType[],
   isAwait: true as boolean,
   isSuccessSendJog: false as boolean,
 };
