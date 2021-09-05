@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100vw;
   max-width: $content-wide;
+  margin-top: -18px;
 
   @media screen and (max-width: $content-phone) {
     justify-content: center;

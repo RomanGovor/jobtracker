@@ -11,9 +11,9 @@
   .login {
     display: flex;
     justify-content: center;
-    @include size(503px, 379px);
+    @include size(503px, 435px);
     background-image: url('../../assets/images/bear-face.svg');
-    background-position: 50% 72px;
+    background-position: 51% 169px;
     background-repeat: no-repeat;
     background-color: $color-purple;
     border-radius: 44px;
@@ -24,6 +24,7 @@
         align-self: flex-end;
         color: $color-purple;
         border: solid 3px $color-purple;
+        margin-bottom: 36%;
 
         &:hover {
           background-color: $color-purple;
@@ -40,7 +41,7 @@
     }
 
     @media screen and (max-width: $content-phone) {
-      background-position: center 30%;
+      background-position: center 20%;
       height: 590px;
     }
   }

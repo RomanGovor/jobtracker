@@ -8,7 +8,8 @@
   height: 122px;
   font-size: 14px;
   color: $color-jog-text;
-  margin-top: 53px;
+  margin-top: 45px;
+  padding-top: 11px;
 
   &__img {
     width: 87px;
@@ -22,7 +23,7 @@
   @media screen and (max-width: $content-phone) {
     display: flex;
     justify-content: flex-end;
-    height: 187.4px;
+    height: 144px;
     width: 100vw;
     border-bottom: 2px solid $color-bg-filter-panel;
 
@@ -33,6 +34,8 @@
 
     &__img {
       background-position: 25% 43%;
+      margin: 0 35px;
+      margin-bottom: 34px;
     }
   }
 

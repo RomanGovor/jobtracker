@@ -12,7 +12,7 @@
   font-size: 13px;
 
   color: $color-filter-panel-text;;
-  padding: 0 10vw;
+  padding: 0 36.8%;
 
   &__section {
     margin: 0;
@@ -33,7 +33,9 @@
   }
 
   @media screen and (max-width: $content-phone) {
+    width: 328px;
     height: 60px;
+    padding: 0 8%;
 
     &__input {
       width: 72px;
