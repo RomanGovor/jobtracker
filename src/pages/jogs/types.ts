@@ -1,7 +1,10 @@
 import { InitialStateType as CommonStateType } from '../../redux/commonReducer';
+import { jogType } from '../../types';
 
 export type PropsTypeJogs = {
   isFilterActive: boolean;
+  jogs: jogType[];
+  isAwait: boolean;
 };
 
 export type mapStateType = {

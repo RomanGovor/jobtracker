@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { getAccessTokenFromStorage } from '../utils/storage';
 
-export const defaultPath = 'https://jogtracker.herokuapp.com/api/v1/auth/';
+export const defaultPath = 'https://jogtracker.herokuapp.com/api/v1/';
 
-export const jogtrackerApi = {
+export const userApi = {
   getUserToken(uuid: string) {
     return axios
-      .post(`${defaultPath}uuidLogin`, `uuid=${uuid}`, {
+      .post(`${defaultPath}auth/uuidLogin`, `uuid=${uuid}`, {
         headers: {
           Accept: 'application/json',
         },
@@ -18,7 +18,7 @@ export const jogtrackerApi = {
   },
   isTokenValid() {
     return axios
-      .get(`${defaultPath}user`)
+      .get(`${defaultPath}auth/user`)
       .then(() => true)
       .catch(() => false);
   },
@@ -36,4 +36,4 @@ export const jogtrackerApi = {
   },
 };
 
-axios.interceptors.request.use(jogtrackerApi.installingAuthorizationConfig);
+axios.interceptors.request.use(userApi.installingAuthorizationConfig);

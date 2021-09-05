@@ -22,10 +22,6 @@ const App: React.FC<PropsType> = (props) => {
     dispatch(actionsCommon.asyncCheckOnTokenValid());
   }, []);
 
-  useEffect(() => {
-    console.log(isLogin);
-  }, [isLogin]);
-
   return (
     <div className="App">
       <NavBar isFilterActive={isFilterActive} isLogin={isLogin} />

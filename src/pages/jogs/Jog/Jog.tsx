@@ -1,18 +1,18 @@
 import React from 'react';
 import moment from 'moment';
 import './jog.scss';
+import { PropsType } from './types';
 
-const Jog: React.FC = () => {
-  const speed = 454.43;
-  const distance = 4646;
-  const time = 'y56:4343';
-  // const date = '45.32.1';
+const Jog: React.FC<PropsType> = (props) => {
+  const { jog } = props;
+  const { distance, time, date } = jog;
+  const speed = time ? distance / time : 0;
 
   return (
     <div className="jog">
       <div className="jog__img" />
       <div className="jog__text">
-        <p className="jog__date jog__info">{moment(new Date(4 * 1e3)).format('MM.DD.YYYY')}</p>
+        <p className="jog__date jog__info">{moment(new Date(date * 1e3)).format('MM.DD.YYYY')}</p>
         <p className="jog__info">
           <span className="jog__inside-text">Speed:</span> {speed.toPrecision(2)}
         </p>

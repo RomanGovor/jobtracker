@@ -1,10 +1,13 @@
 import { InferActionsTypes } from './store';
+import { jogType } from '../types';
 
 export const initialState = {
   isFilterActive: false as boolean,
   isLogin: false as boolean,
   userToken: '' as string,
   uuid: 'hello' as string,
+  jogs: [{ id: 1, user_id: 'test', distance: 1, time: 1, date: 1 }] as jogType[],
+  isAwait: true as boolean,
 };
 
 export enum actionsTypes {
@@ -13,6 +16,9 @@ export enum actionsTypes {
   SET_AUTHENTICATION_TOKEN = 'COMMON/SET_AUTHENTICATION_TOKEN',
   SET_LOGIN_FLAG = 'SET_LOGIN_FLAG',
   ASYNC_CHECK_ON_TOKEN_VALID = 'COMMON/ASYNC_CHECK_ON_TOKEN_VALID',
+  ASYNC_GET_JOGS = 'COMMON/ASYNC_GET_JOGS',
+  SET_JOGS = 'COMMON/SET_JOGS',
+  SET_AWAIT_FLAG = 'SET_AWAIT_FLAG',
 }
 
 export const actionsCommon = {
@@ -24,6 +30,9 @@ export const actionsCommon = {
     ({ type: actionsTypes.SET_AUTHENTICATION_TOKEN, userToken } as const),
   setLoginFlag: (isLogin: boolean) => ({ type: actionsTypes.SET_LOGIN_FLAG, isLogin } as const),
   asyncCheckOnTokenValid: () => ({ type: actionsTypes.ASYNC_CHECK_ON_TOKEN_VALID } as const),
+  asyncGetJogs: () => ({ type: actionsTypes.ASYNC_GET_JOGS } as const),
+  setJogs: (jogs: jogType[]) => ({ type: actionsTypes.SET_JOGS, jogs } as const),
+  setAwaitFlag: (isAwait: boolean) => ({ type: actionsTypes.SET_AWAIT_FLAG, isAwait } as const),
 };
 
 export type InitialStateType = typeof initialState;
@@ -47,6 +56,18 @@ const commonReducer = (state = initialState, action: ActionsType): InitialStateT
       return {
         ...state,
         userToken: action.userToken,
+      };
+    }
+    case actionsTypes.SET_JOGS: {
+      return {
+        ...state,
+        jogs: [...action.jogs],
+      };
+    }
+    case actionsTypes.SET_AWAIT_FLAG: {
+      return {
+        ...state,
+        isAwait: action.isAwait,
       };
     }
     default:
