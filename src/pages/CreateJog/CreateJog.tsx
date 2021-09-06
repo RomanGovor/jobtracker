@@ -41,6 +41,8 @@ const CreateJog: React.FC<PropsType> = (props) => {
         <div className="create-jog__form-field">
           <label className="create-jog__form-field__label">Distance</label>
           <input
+            name="distance"
+            defaultValue="0"
             className="create-jog__form-field__input"
             type="text"
             onChange={(e) => onInputValueChange(e, setDistance)}
@@ -49,6 +51,8 @@ const CreateJog: React.FC<PropsType> = (props) => {
         <div className="create-jog__form-field">
           <label className="create-jog__form-field__label">Time</label>
           <input
+            name="time"
+            defaultValue="0"
             className="create-jog__form-field__input"
             type="text"
             onChange={(e) => onInputValueChange(e, setTime)}
@@ -57,6 +61,7 @@ const CreateJog: React.FC<PropsType> = (props) => {
         <div className="create-jog__form-field">
           <label className="create-jog__form-field__label">Date</label>
           <input
+            name="date"
             className="create-jog__form-field__input"
             type="date"
             onChange={(e) => onInputValueChange(e, setDate)}
